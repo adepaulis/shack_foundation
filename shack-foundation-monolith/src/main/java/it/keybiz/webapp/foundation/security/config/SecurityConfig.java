@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
+import it.keybiz.webapp.foundation.model.Authority;
 import it.keybiz.webapp.foundation.security.users.CustomUserDetailsService;
 
 @Configuration
@@ -29,8 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
         .csrf().disable()
         .authorizeRequests()
             .antMatchers("/login*", "/resources/**").permitAll()
-            .antMatchers("/application","/application/*").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN")
-            .antMatchers("/users","/users/*").hasAuthority("ROLE_ADMIN")
+            .antMatchers("/application","/application/*").hasAnyAuthority(Authority.ROLE_USER.toString(), Authority.ROLE_ADMIN.toString())
+            .antMatchers("/users","/users/*").hasAuthority(Authority.ROLE_ADMIN.toString())
             .and()
         .formLogin()
             .loginPage("/login")
