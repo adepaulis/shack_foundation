@@ -14,6 +14,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 		// TODO Auto-generated method stub
 		super.addViewControllers(registry);
 		registry.addViewController("/").setViewName("login");
+		registry.addViewController("/login").setViewName("login");
 		registry.addViewController("/application").setViewName("application/application");
 	}
 	
